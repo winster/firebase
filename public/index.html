@@ -1,0 +1,645 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/app.css"></link>
+  <link rel="stylesheet" href="css/bootstrap-clockpicker.min.css"></link>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+<header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"> 
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="glyphicon glyphicon-user"></span>
+            </button> 
+            <a href="#/" class="navbar-brand icon"></a>
+            <a href="javascript:void(0)" class="navbar-brand brandtitle" id="brandtitle">Parkee</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li> 
+                    <a href="#/" class="menuitem">
+                        <span class="glyphicon glyphicon-bookmark"></span>Book
+                    </a>
+                </li>
+                <li> 
+                    <a href="#/login" class="menuitem authlink login">
+                        <span class="glyphicon glyphicon-log-in"></span>Login
+                    </a>
+                </li>
+                <li> 
+                    <a href="#/profile" class="menuitem authlink profile">
+                        <span class="glyphicon glyphicon-user"></span>Profile
+                    </a>
+                </li>
+                <li> 
+                    <a href="#/logout" class="menuitem authlink logout">
+                        <span class="glyphicon glyphicon-log-out"></span>Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div id="container" class="container">
+    <!-- Home -->
+    <form id="frmSearch" role="form" class="form-inline">
+        <div class="container">
+            <div class="row searchPanel">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle citybtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bangalore <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Upcoming cities</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Chennai</a></li>
+                            <li><a href="#">Mumbai</a></li>
+                            <li><a href="#">Delhi</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                    <input id="searchbox" class="typeahead form-control" type="text" placeholder="Search Parkee Locations" autofocus>
+                </div><!-- /input-group -->
+            </div><!-- /.row -->        
+        </div>
+        <br/>
+        <div class="row">
+            <div id="map"></div>
+        </div>
+        <div class="baytitle">Alabama Shopping Mall</div>
+        <div class="table-responsive">
+          <table class="table table-bordered availability">
+            <tr class="thead">
+                <td>10am-11am</td>
+                <td>11am-12pm</td>
+                <td>12pm-1pm</td>
+            </tr>
+            <tr class="lots">
+                <td><span class="limited">15 lots</span></td>
+                <td><span>120</span> lots</td>
+                <td><span>150</span> lots</td>
+            </tr>
+          </table>
+        </div>
+        <div>
+            <div class="pull-left">
+                <span class="availabilityLabel">Parking lot availability</span>
+            </div>
+            <div class="pull-right">
+                <b>25</b><span class="availabilityLabel"> minutes to reach</span>  
+            </div>
+        </div>
+        <div class="container booklot">
+            <br/>
+            <div class="row mobile">
+                <div class="col-xs-3">
+                    <input class="form-control" id="timefrom" value="" placeholder="" readonly="">
+                </div>
+                <div class="col-xs-1 divider">
+                    TO
+                </div>
+                <div class="col-xs-3">
+                    <input class="form-control" id="timeto" value="" disabled="">
+                </div>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-sm btn-primary btn-block">BOOK</button>
+                </div>
+            </div>
+            <div class="row desktop">
+                <div class="col-xs-12">
+                    <input class="form-control" id="timefromdesk" value="" placeholder="">
+                    TO
+                    <input class="form-control" id="timetodesk" value="" disabled="">
+                    <button type="submit" class="btn btn-sm btn-primary">BOOK</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- / LOGOUT -->
+    <!-- LOGIN -->
+    <form id="frmLogin" role="form">
+        <div class="form-group">
+            <label for="txtEmail">Email address</label>
+            <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+        </div>
+        <div class="form-group">
+            <label for="txtPass">Password</label>
+            <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+        </div>
+        <div class="row"> 
+            <div class="col-xs-offset-3 col-xs-6 col-md-4 col-md-offset-4">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </div>   
+        </div>
+        <br/>
+        <br/>
+        <hr/>
+        <div class="pull-right">
+            <a href="#/register">New users? Register here</a>
+        </div>
+    </form>
+    <!-- / LOGIN -->
+    <!-- LOGOUT -->
+    <form id="frmLogout" role="form">
+         <h2>You are logged out!</h2>
+    </form>
+    <!-- / LOGOUT -->
+    <!-- REGISTER -->
+    <form id="frmRegister" role="form">
+        <div class="form-group">
+            <label for="txtRegEmail">Email address</label>
+            <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+        </div>
+        <div class="form-group">
+            <label for="txtRegPass">Password</label>
+            <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+        </div>
+        <div class="row"> 
+            <div class="col-xs-offset-3 col-xs-6 col-md-4 col-md-offset-4">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>   
+        </div>
+        <br/>
+        <br/>
+        <hr/>
+        <div class="pull-right">
+            <a href="#/login">Already have an account? Login here</a>
+        </div>
+    </form>
+    <!-- / REGISTER -->
+    <!-- PROFILE -->
+    <form id="frmProfile" role="form">
+        <div class="form-group">
+            <label for="txtName">Email</label>
+            <input type="text" class="form-control" id="txtId" placeholder="user id" name="uid" />
+        </div>
+        <div class="form-group">
+            <label for="txtName">Name</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Enter name" name="name" />
+        </div>
+        <div class="form-group">
+            <a href="javascript:void(0)" class="payment disable">
+                <span class="glyphicon glyphicon-plus"></span>Add Payment
+            </a>
+        </div>
+        <div class="row"> 
+            <div class="col-xs-offset-3 col-xs-6 col-md-4 col-md-offset-4">
+                <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+            </div>   
+        </div>
+    </form>
+    <!-- / PROFILE -->
+    
+    <!-- ALERT BOX 
+    <div id="alert" class="alert" role="alert">
+         <h4 id="alert-title">You are not logged in</h4>
+
+        <p id="alert-detail"></p>
+    </div>
+    / ALERT BOX -->
+</div>
+<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.0.0/jquery.serialize-object.compiled.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/path.js/0.8.4/path.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="js/bootstrap-clockpicker.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+(function (jQuery, Firebase, Path) {
+    "use strict";
+
+    // the main firebase reference
+    var rootRef = new Firebase('https://kenjix.firebaseio.com');
+
+    // pair our routes to our form elements and controller
+    var routeMap = {
+        '#/': {
+            form: 'frmSearch',
+            controller: 'search'
+        },
+        '#/login': {
+            form: 'frmLogin',
+            controller: 'login'
+        },
+        '#/logout': {
+            form: 'frmLogout',
+            controller: 'logout'
+        },
+        '#/register': {
+            form: 'frmRegister',
+            controller: 'register'
+        },
+        '#/profile': {
+            form: 'frmProfile',
+            controller: 'profile',
+            authRequired: true // must be logged in to get here
+        },
+        '#/pay': {
+            form: 'frmPay',
+            controller: 'pay',
+            authRequired: true
+        },
+    };
+
+    // create the object to store our controllers
+    var controllers = {};
+
+    // store the active form shown on the page
+    var activeForm = null;
+
+    var alertBox = $('#alert');
+
+    function routeTo(route) {
+        window.location.href = '#/' + route;
+    }
+
+    // Handle Email/Password login
+    // returns a promise
+    function authWithPassword(userObj) {
+        var deferred = $.Deferred();
+        console.log(userObj);
+        rootRef.authWithPassword(userObj, function onAuth(err, user) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+                if (userObj.newUser && user) {
+                    //this stt has to be done after email/phone number verification
+                    rootRef.child("users").child(user.uid).set({
+                      provider: user.provider,
+                      email: user.password.email
+                    });
+                    deferred.resolve(user);
+                }
+            }
+
+        });
+
+        return deferred.promise();
+    }
+
+    // create a user but not login
+    // returns a promsie
+    function createUser(userObj) {
+        var deferred = $.Deferred();
+        rootRef.createUser(userObj, function (err) {
+
+            if (!err) {
+                userObj.newUser = true;
+                deferred.resolve();
+            } else {
+                deferred.reject(err);
+            }
+
+        });
+
+        return deferred.promise();
+    }
+
+    // Create a user and then login in
+    // returns a promise
+    function createUserAndLogin(userObj) {
+        return createUser(userObj)
+            .then(function () {
+            return authWithPassword(userObj);
+        });
+    }
+
+
+    // route to the specified route if sucessful
+    // if there is an error, show the alert
+    function handleAuthResponse(promise, route) {
+        $.when(promise)
+            .then(function (authData) {
+
+            // route
+            routeTo(route);
+
+        }, function (err) {
+            console.log(err);
+            // pop up error
+            showAlert({
+                title: err.code,
+                detail: err.message,
+                className: 'alert-danger'
+            });
+
+        });
+    }
+
+    // options for showing the alert box
+    function showAlert(opts) {
+        var title = opts.title;
+        var detail = opts.detail;
+        var className = 'alert ' + opts.className;
+
+        alertBox.removeClass().addClass(className);
+        alertBox.children('#alert-title').text(title);
+        alertBox.children('#alert-detail').text(detail);
+    }
+
+    /// Controllers
+    ////////////////////////////////////////
+    controllers.search = function (form) {
+        $("#brandtitle").text("Parkee");
+        if(!$("#brandtitle").hasClass("brandtitle"))
+            $("#brandtitle").addClass("brandtitle");
+    };
+
+    controllers.login = function (form) {
+        var user = rootRef.getAuth();
+        if(user) {
+            // route
+            routeTo('profile');
+        }
+        $("#brandtitle").text("Login");
+        $("#brandtitle").removeClass("brandtitle");
+        // Form submission for logging in
+        form.on('submit', function (e) {
+
+            var userAndPass = $(this).serializeObject();
+            var loginPromise = authWithPassword(userAndPass);
+            e.preventDefault();
+
+            handleAuthResponse(loginPromise, 'profile');
+
+        });
+
+        //book
+        form.children('.btnBook').on('click', function (e) {
+            e.preventDefault();
+            var user = rootRef.getAuth();
+            var userRef;
+            // If no current user send to login page
+            if (!user) {
+                routeTo('login');
+                return;
+            }
+            //check availability
+            //TODO
+            //Book
+            /*var bookingsRef = rootRef.child('bookings');
+            var newBookingRef = bookingsRef.push();
+            newBookingRef.set({
+                uid:
+            });*/
+
+        });
+
+    };
+
+    // logout immediately when the controller is invoked
+    controllers.logout = function (form) {
+        $("#brandtitle").text("Parkee");
+        if(!$("#brandtitle").hasClass("brandtitle"))
+        $("#brandtitle").addClass("brandtitle");
+        rootRef.unauth();
+    };
+
+    controllers.register = function (form) {
+        $("#brandtitle").text("Register");
+        $("#brandtitle").removeClass("brandtitle");
+        // Form submission for registering
+        form.on('submit', function (e) {
+
+            var userAndPass = $(this).serializeObject();
+            var loginPromise = createUserAndLogin(userAndPass);
+            e.preventDefault();
+
+            handleAuthResponse(loginPromise, 'profile');
+
+        });
+
+    };
+
+    controllers.profile = function (form) {
+        $("#brandtitle").text("Profile");
+        $("#brandtitle").removeClass("brandtitle")
+        // Check the current user
+        var user = rootRef.getAuth();
+        var userRef;
+
+        // If no current user send to register page
+        if (!user) {
+            routeTo('register');
+            return;
+        }
+
+        form.find('#txtId').val(user.password.email);
+        // Load user info
+        userRef = rootRef.child('users').child(user.uid);
+        userRef.once('value', function (snap) {
+            var user = snap.val();
+            if (!user) {
+                return;
+            }
+
+            // set the fields
+            form.find('#txtName').val(user.name);
+            form.find('#ddlDino').val(user.favoriteDinosaur);
+        });
+
+        // Save user's info to Firebase
+        form.on('submit', function (e) {
+            e.preventDefault();
+            var userInfo = $(this).serializeObject();
+
+            userRef.set(userInfo, function onComplete() {
+
+                // show the message if write is successful
+                showAlert({
+                    title: 'Successfully saved!',
+                    detail: 'You are still logged in',
+                    className: 'alert-success'
+                });
+
+            });
+        });
+
+    };
+
+    /// Routing
+    ////////////////////////////////////////
+
+    // Handle transitions between routes
+    function transitionRoute(path) {
+        // grab the config object to get the form element and controller
+        var formRoute = routeMap[path];
+        var currentUser = rootRef.getAuth();
+
+        // if authentication is required and there is no
+        // current user then go to the register page and
+        // stop executing
+        if (formRoute.authRequired && !currentUser) {
+            routeTo('login');
+            return;
+        }
+
+        // wrap the upcoming form in jQuery
+        var upcomingForm = $('#' + formRoute.form);
+
+        // if there is no active form then make the current one active
+        if (!activeForm) {
+            activeForm = upcomingForm;
+        }
+
+        // hide old form and show new form
+        activeForm.hide();
+        upcomingForm.show().hide().fadeIn(750);
+
+        // remove any listeners on the soon to be switched form
+        activeForm.off();
+
+        // set the new form as the active form
+        activeForm = upcomingForm;
+
+        // invoke the controller
+        controllers[formRoute.controller](activeForm);
+
+        $('.menuitem').removeClass('highlightmenu');
+        $('a[href="' + path + '"]').addClass('highlightmenu');
+    }
+
+    // Set up the transitioning of the route
+    function prepRoute() {
+        transitionRoute(this.path);
+    }
+
+
+    /// Routes
+    ///  #/         - Login
+    //   #/logout   - Logut
+    //   #/register - Register
+    //   #/profile  - Profile
+
+    Path.map("#/").to(prepRoute);
+    Path.map("#/login").to(prepRoute);
+    Path.map("#/logout").to(prepRoute);
+    Path.map("#/register").to(prepRoute);
+    Path.map("#/profile").to(prepRoute);
+
+    Path.root("#/");
+
+    /// Initialize
+    ////////////////////////////////////////
+
+    $(function () {
+
+        // Start the router
+        Path.listen();
+
+        // whenever authentication happens send a popup
+        rootRef.onAuth(function globalOnAuth(authData) {
+            $(".authlink").hide();
+            if (authData) {
+                showAlert({
+                    title: 'Logged in!',
+                    detail: 'Using ' + authData.provider,
+                    className: 'alert-success'
+                });
+                $(".icon-bar").hide();
+                $(".glyphicon-user").show();
+                $(".logout").show();
+                $(".profile").show();
+            } else {
+                showAlert({
+                    title: 'You are not logged in',
+                    detail: '',
+                    className: 'alert-info'
+                });
+                $(".icon-bar").show();
+                $(".glyphicon-user").hide();
+                $(".login").show();
+            }
+
+        });
+
+        $(document).on('click','.navbar-collapse.in',function(e) {
+            if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+                $(this).collapse('hide');
+            }
+        });
+        $(document).click(function (event) {
+            var clickover = $(event.target);
+            var $navbar = $(".navbar-collapse");               
+            var _opened = $navbar.hasClass("in");
+            if (_opened === true && !clickover.hasClass("navbar-toggle")) {      
+                $navbar.collapse('hide');
+            }
+        });
+
+        var substringMatcher = function(strs) {
+          return function findMatches(q, cb) {
+            var matches, substrRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function(i, str) {
+              if (substrRegex.test(str.name)) {
+                matches.push(str.name);
+              }
+            });
+
+            cb(matches);
+          };
+        };
+
+        $.getJSON('bangalore.json', function(data){
+            $('.searchPanel .typeahead').typeahead({
+              hint: true,
+              highlight: true,
+              minLength: 1
+            },
+            {
+              name: 'places',
+              source: substringMatcher(data)
+            });
+        });
+
+        
+        var d = new Date();
+        var fromtime = (d.getHours()<10 ?("0"+d.getHours()) :d.getHours())+":"+(d.getMinutes()<10 ?("0"+d.getMinutes()) :d.getMinutes());
+        var hours = d.getHours()+1;
+        var totime = (hours<10 ?("0"+hours) :hours)+":"+(d.getMinutes()<10 ?("0"+d.getMinutes()) :d.getMinutes());
+        $('#timefrom').val(fromtime);
+        $('#timefromdesk').val(fromtime);
+        var fromMobile = $('#timefrom').clockpicker({
+            placement: 'top',
+            align: 'left',
+            autoclose: true,
+            'default': 'now'
+        });
+        var fromDesk = $('#timefromdesk').clockpicker({
+            placement: 'top',
+            align: 'left',
+            autoclose: true,
+            'default': 'now'
+        });
+        $('#timeto').val(totime);
+        $('#timetodesk').val(totime);
+        
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(12.9667, 77.5667),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+    });
+
+}(window.jQuery, window.Firebase, window.Path))
+</script>
+</body>
+</html>

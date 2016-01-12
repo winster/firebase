@@ -1,0 +1,201 @@
+form {
+  display: none;
+}
+body {
+  overflow: hidden; 
+}
+.navbar-toggle .glyphicon-user {
+    color:grey;
+}
+.navbar-collapse .glyphicon, .payment .glyphicon{
+    color:grey;
+    margin-right: 1em;
+}
+.highlightmenu, .highlightmenu *{
+    color: white !important;
+}
+.icon {
+    background: url('../img/parking.png') no-repeat;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    margin-top: -5px;
+}
+.brandtitle{
+    font-size: 2em;
+    color: white !important;
+}
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.tt-hint {
+  color: #999
+}
+.tt-menu {
+  width: 100%;
+  margin: 12px 0;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+.tt-suggestion p {
+  margin: 0;
+}
+.gist {
+    font-size: 14px;
+}
+.citybtn {
+    border: none;
+    background-color: white !important;
+}
+.table-responsive {
+  margin-bottom: 0;
+}
+.availability {
+    text-align: center;
+}
+.availability .thead{
+    background-color: #F8F8F8;
+}
+.availability .lots {
+    font-weight: bold;
+    color: #77C177;
+}
+.availability .limited {
+    color: #a94442;
+}
+.bookingtitle{
+    font-size: 1.3em;
+    border-bottom: 1px solid;
+    margin: 1em 0 1.3em 0;
+}
+/*Tablet spec*/
+.baytitle {
+  font-size: 1.8em;
+  margin: 1em 0 0.6em 0;
+}
+.availability .thead{
+  font-size: 1em
+}
+.availability .lots {
+  font-size: 1.3em;
+}
+.availabilityLabel{
+  font-size: 1.2em;
+}
+.booklot .desktop {
+  display: inline;
+  text-align: center;
+}
+.booklot .mobile {
+  display: none;
+}
+#map {
+    display: block;
+    width: 100%;
+    height: 250px;
+}
+@media screen and ( max-height: 650px ){
+    #map {
+      height: 150px;
+    }
+    .baytitle{
+      font-size: 1.6em;
+      margin: 1em 0 0.5em 0;
+    }
+    .availability .thead{
+        font-size: 0.9em
+    }
+    .availability .lots {
+        font-size: 1.1em;
+    }
+    .availabilityLabel{
+      font-size: 1em;
+    }
+    .booklot .mobile .form-control{
+      font-size: 13px;
+    }
+}
+@media screen and ( max-height: 550px ){
+    #map {
+      height: 120px;
+    }
+   .baytitle {
+      font-size: 1.3em;
+      margin: 0.7em 0 0 0;
+    }
+    .availability .thead{
+        font-size: 0.8em
+    }
+    .availability .lots {
+        font-size: 1em;
+    }
+    .availabilityLabel{
+      font-size: 0.8em;
+    }
+    .booklot .mobile .form-control{
+      font-size: 13px;
+    }  
+}
+@media screen and (max-width: 601px){
+    .booklot .mobile {
+      display: inline;
+    }
+    .booklot .desktop {
+      display: none;
+    }
+}
+.booklot {
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    /*background-color: #f0f0f0;
+    background-image: linear-gradient(to bottom, #f0f0f0, #e4e4e4);
+    background-image: -ms-linear-gradient(top, #f0f0f0, #e4e4e4);
+    background-image: -webkit-linear-gradient(top, #f0f0f0, #e4e4e4);*/
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    transition: .3s;
+    -webkit-transition: .3s;
+    bottom: 0;
+    height: 70px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 40;
+}
+.booklot div[class^="col"] {
+  padding-right: 0;
+}
+.booklot .divider {
+  margin: 0.4em 0.4em 0 0;
+}
+.booklot .form-control[readonly] {
+  background-color: #d9edf7;
+}
+.booklot .form-control[disabled] {
+    background-color: #ccc;
+}
